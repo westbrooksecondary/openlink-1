@@ -9,6 +9,7 @@ import { Toast } from "./components/toast.tsx";
 import type { StatusResponse } from "./types/auth.ts";
 import Login from "./pages/login.tsx";
 import Main from "./pages/dash.tsx";
+import SchoolDashboard from "./pages/schoolDashboard.tsx";
 import ProtectedRoute from "./protectRoute.tsx";
 import "./public/assets/css/index.css";
 import { logger } from "./lib/logger";
@@ -83,6 +84,22 @@ render(
               )}
             />
             <Route path="/login" component={Login} />
+            <Route
+              path="/admin-preview"
+              component={() => (
+                <ProtectedRoute>
+                  {() => <SchoolDashboard role="admin" />}
+                </ProtectedRoute>
+              )}
+            />
+            <Route
+              path="/staff-preview"
+              component={() => (
+                <ProtectedRoute>
+                  {() => <SchoolDashboard role="staff" />}
+                </ProtectedRoute>
+              )}
+            />
           </Router>
         </Suspense>
       </Edulink>

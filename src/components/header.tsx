@@ -94,6 +94,24 @@ export default function Header(props: {
                 >
                   <div class="py-1 z-40">
                     <button
+                      onClick={() => {
+                        setOpen(false);
+                        navigate("/admin-preview");
+                      }}
+                      class="block w-full text-left px-4 py-1 text-sm cursor-pointer"
+                    >
+                      Admin dashboard preview
+                    </button>
+                    <button
+                      onClick={() => {
+                        setOpen(false);
+                        navigate("/staff-preview");
+                      }}
+                      class="block w-full text-left px-4 py-1 text-sm cursor-pointer"
+                    >
+                      Staff dashboard preview
+                    </button>
+                    <button
                       // onClick={() => props.showSettings((prev) => !prev)}
                       onClick={() => props.loadItemPage("settings", "Sessages", true)}
                       class="block w-full text-left px-4 py-1 text-sm cursor-pointer"
