@@ -34,6 +34,8 @@ jobs:
 
       - name: Build UI
         run: bun run build:frontend
+        env:
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
 
       - name: Create .nojekyll
         run: touch dist/.nojekyll

@@ -6,6 +6,9 @@ const host = process.env.TAURI_DEV_HOST;
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: process.env.BASE_PATH
+    ? (process.env.BASE_PATH.endsWith("/") ? process.env.BASE_PATH : `${process.env.BASE_PATH}/`)
+    : "/",
   plugins: [
     tailwindcss() as PluginOption,
     solid() as PluginOption,

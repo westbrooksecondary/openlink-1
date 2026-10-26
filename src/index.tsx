@@ -71,7 +71,7 @@ render(
     <Toast>
       <Edulink>
         <Suspense fallback={<LoadingFallback />}>
-          <Router root={App}>
+          <Router root={App} base={import.meta.env.BASE_URL}>
             <Route
               path="/"
               component={() => (
