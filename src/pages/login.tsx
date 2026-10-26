@@ -7,6 +7,7 @@ import { useNavigate } from "@solidjs/router";
 import { callApi } from "../api/fetch";
 import { SchoolDetailsResponse } from "../types/auth";
 import { CgMicrosoft, CgGoogle } from "solid-icons/cg";
+import { schools } from "../data/schools";
 
 declare global {
   interface Window {
@@ -527,11 +528,27 @@ function Login() {
                   }}
                 >
                   <div class={state.styles!["__row"]}>
+                    <Show when={schools.length > 0}>
+                      <select
+                        aria-label="Choose a saved school"
+                        class="w-full border-b border-white/50 bg-transparent py-2 text-white"
+                        value={schools.find((school) => school.code === state.code)?.code ?? ""}
+                        onChange={(e) => setState("code", e.currentTarget.value)}
+                      >
+                        <option value="">Choose a school</option>
+                        {schools.map((school) => (
+                          <option value={school.code}>
+                            {school.name} ({school.postcode})
+                          </option>
+                        ))}
+                      </select>
+                    </Show>
                     <label class={state.styles!["__label"]}>
                       <input
                         type="text"
                         class={state.styles!["__field"]}
                         placeholder=" "
+                        value={state.code}
                         onInput={(e) =>
                           setState({
                             code: e.currentTarget.value,
